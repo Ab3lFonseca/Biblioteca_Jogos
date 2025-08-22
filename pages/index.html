@@ -4,48 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca de jogos</title>
+    <title>Cadastro - Biblioteca de Jogos</title>
+    <link rel="stylesheet" href="/styles/styles-cadastro.css">
 </head>
 
 <body>
-    <header>
-        <h1>Cadastro de Usuário</h1>
-    </header>
-    <form id="formCadastro">
-        <div>
-
-            <label for=""></label>
-            <input type="text">
-        </div>
-        <div>
-
-            <label for=""></label>
-            <input type="text">
-        </div>
-        <div>
-
-            <label for=""></label>
-            <input type="text">
-        </div>
-        <div>
-
-            <label for=""></label>
-            <input type="text">
-        </div>
-        <div>
-
-            <label for=""></label>
-            <input type="text">
-        </div>
-        <div>
-
-            <label for=""></label>
-            <input type="text">
-        </div>
-        <button type="submit" id="botaoConfirmarCadastro">
-            Confirmar Cadastro
-        </button>
-    </form>
+    <div class="container">
+        <header>
+            <h1>Cadastro de Usuário</h1>
+            <p class="subtitle">Crie sua conta na Biblioteca de Jogos</p>
+        </header>
+        
+        <main>
+            <form id="formCadastro" class="form-container">
+                <div class="input-group">
+                    <label for="nomeCompleto">Nome Completo</label>
+                    <input type="text" id="nomeCompleto" name="nomeCompleto" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="nomeUsuario">Nome de Usuário</label>
+                    <input type="text" id="nomeUsuario" name="nomeUsuario" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="confirmarSenha">Confirmar Senha</label>
+                    <input type="password" id="confirmarSenha" name="confirmarSenha" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="dataNascimento">Data de Nascimento</label>
+                    <input type="date" id="dataNascimento" name="dataNascimento" required>
+                </div>
+                
+                <button type="submit" id="botaoConfirmarCadastro" class="btn-primary">
+                    Confirmar Cadastro
+                </button>
+                
+                <div class="form-footer">
+                    <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+                </div>
+            </form>
+        </main>
+    </div>
 </body>
 
 </html>

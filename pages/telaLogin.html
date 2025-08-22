@@ -1,28 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca de jogos</title>
+    <title>Login - Biblioteca de Jogos</title>
+    <link rel="stylesheet" href="/styles/styles-login.css">
 </head>
+
 <body>
-    <header>
-        <h1>Login de Usuário</h1>
-    </header>
-    <form id="formLogin">
-        <div>
-
-            <label for=""></label>
-            <input type="text">
-        </div>
-        <div>
-
-            <label for=""></label>
-            <input type="text">
-        </div>
-        <button type="submit" id="botaoConfirmarLogin">
-            Confirmar Login
-        </button>
-    </form>
+    <div class="container">
+        <header>
+            <h1>Login de Usuário</h1>
+            <p class="subtitle">Acesse sua conta na Biblioteca de Jogos</p>
+        </header>
+        
+        <main>
+            <form id="formLogin" class="form-container">
+                <div class="input-group">
+                    <label for="emailLogin">E-mail ou Nome de Usuário</label>
+                    <input type="text" id="emailLogin" name="emailLogin" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="senhaLogin">Senha</label>
+                    <input type="password" id="senhaLogin" name="senhaLogin" required>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="lembrarMe" name="lembrarMe">
+                    <label for="lembrarMe">Lembrar de mim</label>
+                </div>
+                
+                <button type="submit" id="botaoConfirmarLogin" class="btn-primary">
+                    Confirmar Login
+                </button>
+                
+                <div class="form-footer">
+                    <p><a href="#" class="forgot-password">Esqueceu sua senha?</a></p>
+                    <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+                </div>
+            </form>
+        </main>
+    </div>
 </body>
+
 </html>

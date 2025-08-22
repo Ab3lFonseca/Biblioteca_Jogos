@@ -1,26 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca de jogos</title>
+    <title>Perfil - Biblioteca de Jogos</title>
+    <link rel="stylesheet" href="/styles/styles-perfil.css">
 </head>
+
 <body>
-    <header> 
-        <h1>Biblioteca e Jogos</h1>
-        <h2>Seu Perfil</h2>
-        <button>Inicio</button>
-         <button class="botao-perfil"></button>
-    </header>
-    <main>
-        <img src="" alt="imagem do perfil" class="perfil-imagem">
-        <input type="text" placeholder="Descrição do usuario" id="descricaoUsuario">
-        <h3 id="nomeUsuario"></h3><h3 id="seguidores"></h3><h3 id="jogosFavoritos"></h3>
-    </main>
-    <section>
-         <img src="" alt="imagem do jogo" class="jogo-imagem">
-          <h3>Titulo Jogo</h3>
-          <button id="butaoJogo">Detalhes jogo</button>
-    </section>
+    <div class="container">
+        <header class="main-header">
+            <div class="header-content">
+                <h1>Biblioteca de Jogos</h1>
+                <nav class="header-nav">
+                    <button class="btn-nav" id="btnInicio">Início</button>
+                    <button class="btn-nav btn-profile" id="btnPerfil">Perfil</button>
+                </nav>
+            </div>
+        </header>
+        
+        <main class="profile-main">
+            <section class="profile-section">
+                <h2>Seu Perfil</h2>
+                
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <img src="https://via.placeholder.com/150x150/333333/ffffff?text=Avatar" alt="Imagem do perfil" class="perfil-imagem">
+                        <button class="btn-change-avatar">Alterar Foto</button>
+                    </div>
+                    
+                    <div class="profile-details">
+                        <h3 id="nomeUsuario">Nome do Usuário</h3>
+                        <textarea placeholder="Descrição do usuário" id="descricaoUsuario" class="user-description"></textarea>
+                        
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" id="seguidores">0</span>
+                                <span class="stat-label">Seguidores</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="jogosFavoritos">0</span>
+                                <span class="stat-label">Jogos Favoritos</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="jogosJogados">0</span>
+                                <span class="stat-label">Jogos Jogados</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="games-section">
+                <h3>Seus Jogos Favoritos</h3>
+                
+                <div class="games-grid">
+                    <div class="game-card">
+                        <img src="https://via.placeholder.com/200x250/444444/ffffff?text=Game+1" alt="Imagem do jogo" class="jogo-imagem">
+                        <div class="game-info">
+                            <h4>Título do Jogo</h4>
+                            <button class="btn-game-details" id="botaoJogo1">Detalhes do Jogo</button>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card">
+                        <img src="https://via.placeholder.com/200x250/444444/ffffff?text=Game+2" alt="Imagem do jogo" class="jogo-imagem">
+                        <div class="game-info">
+                            <h4>Título do Jogo</h4>
+                            <button class="btn-game-details" id="botaoJogo2">Detalhes do Jogo</button>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card">
+                        <img src="https://via.placeholder.com/200x250/444444/ffffff?text=Game+3" alt="Imagem do jogo" class="jogo-imagem">
+                        <div class="game-info">
+                            <h4>Título do Jogo</h4>
+                            <button class="btn-game-details" id="botaoJogo3">Detalhes do Jogo</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 </body>
+
 </html>
