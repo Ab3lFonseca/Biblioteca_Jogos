@@ -20,7 +20,7 @@ body {
 }
 
 
-.main-header {
+.cabecalho-principal {
     background: rgba(30, 30, 30, 0.95);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -30,7 +30,7 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.header-content {
+.conteudo-cabecalho {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,7 +40,7 @@ body {
     gap: 30px;
 }
 
-.main-header h1 {
+.cabecalho-principal h1 {
     font-size: 2rem;
     font-weight: 700;
     color: #ffffff;
@@ -49,7 +49,7 @@ body {
 }
 
 
-.search-container {
+.container-busca {
     display: flex;
     align-items: center;
     flex: 1;
@@ -57,7 +57,7 @@ body {
     position: relative;
 }
 
-.search-input {
+.entrada-busca {
     width: 100%;
     padding: 12px 50px 12px 16px;
     background: rgba(20, 20, 20, 0.8);
@@ -69,17 +69,17 @@ body {
     transition: all 0.3s ease;
 }
 
-.search-input:focus {
+.entrada-busca:focus {
     border-color: #888888;
     background: rgba(30, 30, 30, 0.9);
     box-shadow: 0 0 0 3px rgba(136, 136, 136, 0.1);
 }
 
-.search-input::placeholder {
+.entrada-busca::placeholder {
     color: #999999;
 }
 
-.search-btn {
+.botao-busca {
     position: absolute;
     right: 8px;
     background: none;
@@ -92,18 +92,18 @@ body {
     transition: all 0.3s ease;
 }
 
-.search-btn:hover {
+.botao-busca:hover {
     color: #ffffff;
     background: rgba(255, 255, 255, 0.1);
 }
 
 
-.header-actions {
+.acoes-cabecalho {
     display: flex;
     gap: 10px;
 }
 
-.action-btn {
+.botao-acao {
     width: 45px;
     height: 45px;
     border: none;
@@ -119,32 +119,23 @@ body {
     overflow: hidden;
 }
 
-.add-btn {
-    background: linear-gradient(135deg, #4a9eff, #0066cc);
-    color: #ffffff;
-}
 
-.remove-btn {
-    background: linear-gradient(135deg, #ff6b6b, #cc0000);
-    color: #ffffff;
-}
-
-.filter-btn {
+.botao-filtro {
     background: linear-gradient(135deg, #666666, #777777);
     color: #ffffff;
 }
 
-.profile-btn {
+.botao-perfil {
     background: linear-gradient(135deg, #888888, #999999);
     color: #ffffff;
 }
 
-.action-btn:hover {
+.botao-acao:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-.action-btn::before {
+.botao-acao::before {
     content: '';
     position: absolute;
     top: 0;
@@ -155,12 +146,12 @@ body {
     transition: left 0.5s;
 }
 
-.action-btn:hover::before {
+.botao-acao:hover::before {
     left: 100%;
 }
 
 
-.main-content {
+.conteudo-principal {
     flex: 1;
     padding: 30px;
     max-width: 1400px;
@@ -169,18 +160,18 @@ body {
 }
 
 
-.filters-section {
+.secao-filtros {
     margin-bottom: 30px;
 }
 
-.filter-tags {
+.tags-filtro {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.filter-tag {
+.tag-filtro {
     padding: 10px 20px;
     background: rgba(60, 60, 60, 0.8);
     color: #e0e0e0;
@@ -194,162 +185,74 @@ body {
     letter-spacing: 0.5px;
 }
 
-.filter-tag:hover {
+.tag-filtro:hover {
     background: rgba(80, 80, 80, 0.9);
     border-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-1px);
 }
 
-.filter-tag.active {
+
+.tag-filtro.active {
     background: linear-gradient(135deg, #666666, #777777);
     border-color: #888888;
     color: #ffffff;
 }
 
-
-.games-section {
+/* Seção de jogos */
+.secao-jogos {
     margin-bottom: 50px;
 }
 
-.games-grid {
+.grade-jogos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
     padding: 20px 0;
 }
 
-.game-card {
-    background: rgba(40, 40, 40, 0.8);
+.cartao-jogo-vazio {
+    background: rgba(40, 40, 40, 0.6);
+    border: 2px dashed rgba(255, 255, 255, 0.2);
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    overflow: hidden;
+    padding: 60px 30px;
+    text-align: center;
     transition: all 0.3s ease;
     cursor: pointer;
-    position: relative;
-}
-
-.game-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.game-image-container {
-    position: relative;
-    overflow: hidden;
-}
-
-.jogo-imagem {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    transition: all 0.3s ease;
-}
-
-.game-card:hover .jogo-imagem {
-    transform: scale(1.05);
-}
-
-.favorite-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 40px;
-    height: 40px;
-    background: rgba(0, 0, 0, 0.7);
-    border: none;
-    border-radius: 50%;
-    color: #ffffff;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    min-height: 200px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.favorite-btn:hover {
-    background: rgba(0, 0, 0, 0.9);
-    transform: scale(1.1);
+.cartao-jogo-vazio:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(50, 50, 50, 0.8);
+    transform: translateY(-4px);
 }
 
-.favorite-btn.favorited {
-    color: #ff6b6b;
-    background: rgba(255, 107, 107, 0.2);
+.icone-adicionar {
+    font-size: 3rem;
+    color: #888888;
+    margin-bottom: 15px;
+    font-weight: 300;
 }
 
-.game-info {
-    padding: 20px;
-}
-
-.game-title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 10px;
-    line-height: 1.3;
-}
-
-.game-description {
+.cartao-jogo-vazio p {
     color: #b0b0b0;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-    line-height: 1.5;
-    height: 60px;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
-
-.game-rating {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.stars {
-    color: #ffd700;
     font-size: 1rem;
-}
-
-.rating-text {
-    color: #999999;
-    font-size: 0.85rem;
     font-weight: 500;
 }
 
-.btn-game-details {
-    width: 100%;
-    padding: 12px 20px;
-    background: linear-gradient(135deg, #666666, #777777);
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.btn-game-details:hover {
-    background: linear-gradient(135deg, #777777, #888888);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-
-.main-footer {
+/* Rodapé */
+.rodape-principal {
     background: rgba(20, 20, 20, 0.9);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 30px 0;
     margin-top: auto;
 }
 
-.footer-content {
+.conteudo-rodape {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 30px;
@@ -360,112 +263,113 @@ body {
     gap: 20px;
 }
 
-.footer-content p {
+.conteudo-rodape p {
     color: #999999;
     font-size: 0.9rem;
 }
 
-.footer-links {
+.links-rodape {
     display: flex;
     gap: 25px;
 }
 
-.footer-link {
+.link-rodape {
     color: #b0b0b0;
     text-decoration: none;
     font-size: 0.9rem;
     transition: color 0.3s ease;
 }
 
-.footer-link:hover {
+.link-rodape:hover {
     color: #ffffff;
 }
 
 /* Responsividade */
 @media (max-width: 1024px) {
-    .header-content {
+    .conteudo-cabecalho {
         padding: 15px 20px;
         gap: 20px;
     }
     
-    .main-content {
+    .conteudo-principal {
         padding: 20px;
     }
     
-    .games-grid {
+    .grade-jogos {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 20px;
     }
 }
 
 @media (max-width: 768px) {
-    .header-content {
+    .conteudo-cabecalho {
         flex-direction: column;
         gap: 15px;
     }
     
-    .main-header h1 {
+    .cabecalho-principal h1 {
         font-size: 1.6rem;
     }
     
-    .search-container {
+    .container-busca {
         max-width: 100%;
         order: 2;
     }
     
-    .header-actions {
+    .acoes-cabecalho {
         order: 1;
         justify-content: center;
     }
     
-    .filter-tags {
+    .tags-filtro {
         justify-content: flex-start;
         overflow-x: auto;
         padding-bottom: 10px;
     }
     
-    .filter-tag {
+    .tag-filtro {
         white-space: nowrap;
     }
     
-    .games-grid {
+    .grade-jogos {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 15px;
     }
     
-    .footer-content {
+    .conteudo-rodape {
         flex-direction: column;
         text-align: center;
     }
 }
 
 @media (max-width: 480px) {
-    .main-content {
+    .conteudo-principal {
         padding: 15px;
     }
     
-    .games-grid {
+    .grade-jogos {
         grid-template-columns: 1fr;
         gap: 15px;
     }
     
-    .action-btn {
+    .botao-acao {
         width: 40px;
         height: 40px;
         font-size: 1rem;
     }
     
-    .game-info {
-        padding: 15px;
+    .cartao-jogo-vazio {
+        padding: 40px 20px;
+        min-height: 150px;
     }
     
-    .game-title {
-        font-size: 1.1rem;
+    .icone-adicionar {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
     }
     
-    .game-description {
-        height: 45px;
-        -webkit-line-clamp: 2;
+    .cartao-jogo-vazio p {
+        font-size: 0.9rem;
     }
 }
 
@@ -483,7 +387,7 @@ body {
     }
 }
 
-.game-card {
+.cartao-jogo-vazio {
     animation: slideUp 0.6s ease-out;
 }
 
@@ -496,21 +400,4 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-
-.main-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #666666, #999999, #666666);
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
 }

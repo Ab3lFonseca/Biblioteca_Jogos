@@ -1,4 +1,4 @@
-/* Reset e configurações base */
+
 * {
     margin: 0;
     padding: 0;
@@ -28,7 +28,7 @@ body {
     position: relative;
 }
 
-/* Efeito de gaming no fundo */
+
 .container::before {
     content: '';
     position: absolute;
@@ -69,33 +69,33 @@ main {
     padding: 30px;
 }
 
-.form-container {
+.container-formulario {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.input-group {
+.grupo-entrada {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.checkbox-group {
+.grupo-checkbox {
     display: flex;
     align-items: center;
     gap: 10px;
     margin: 10px 0;
 }
 
-.checkbox-group input[type="checkbox"] {
+.grupo-checkbox input[type="checkbox"] {
     width: 18px;
     height: 18px;
     accent-color: #888888;
     cursor: pointer;
 }
 
-.checkbox-group label {
+.grupo-checkbox label {
     font-size: 0.9rem;
     color: #c0c0c0;
     cursor: pointer;
@@ -133,7 +133,7 @@ input[type="text"]:hover, input[type="password"]:hover {
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-.btn-primary {
+.botao-primario {
     padding: 16px 24px;
     background: linear-gradient(135deg, #666666, #777777);
     color: #ffffff;
@@ -150,7 +150,7 @@ input[type="text"]:hover, input[type="password"]:hover {
     overflow: hidden;
 }
 
-.btn-primary::before {
+.botao-primario::before {
     content: '';
     position: absolute;
     top: 0;
@@ -161,55 +161,55 @@ input[type="text"]:hover, input[type="password"]:hover {
     transition: left 0.5s;
 }
 
-.btn-primary:hover::before {
+.botao-primario:hover::before {
     left: 100%;
 }
 
-.btn-primary:hover {
+.botao-primario:hover {
     background: linear-gradient(135deg, #777777, #888888);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.btn-primary:active {
+.botao-primario:active {
     transform: translateY(0);
 }
 
-.form-footer {
+.rodape-formulario {
     text-align: center;
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.form-footer p {
+.rodape-formulario p {
     color: #a0a0a0;
     font-size: 0.9rem;
     margin-bottom: 8px;
 }
 
-.form-footer a {
+.rodape-formulario a {
     color: #cccccc;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
-.form-footer a:hover {
+.rodape-formulario a:hover {
     color: #ffffff;
     text-decoration: underline;
 }
 
-.forgot-password {
+.esqueceu-senha {
     color: #aaaaaa !important;
     font-size: 0.85rem !important;
 }
 
-.forgot-password:hover {
+.esqueceu-senha:hover {
     color: #dddddd !important;
 }
 
-/* Responsividade */
+
 @media (max-width: 480px) {
     .container {
         margin: 10px;
@@ -232,13 +232,13 @@ input[type="text"]:hover, input[type="password"]:hover {
         padding: 12px 14px;
     }
     
-    .btn-primary {
+    .botao-primario {
         padding: 14px 20px;
         font-size: 1rem;
     }
 }
 
-/* Animações de entrada */
+
 .container {
     animation: slideIn 0.6s ease-out;
 }

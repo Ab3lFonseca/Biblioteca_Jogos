@@ -10,155 +10,59 @@
 
 <body>
     <div class="container">
-        <header class="main-header">
-            <div class="header-content">
+        <header class="cabecalho-principal">
+            <div class="conteudo-cabecalho">
                 <h1>Biblioteca de Jogos</h1>
                 
-                <div class="search-container">
-                    <input type="text" placeholder="Busque aqui seus jogos..." id="pesquisaJogos" class="search-input">
-                    <button class="search-btn">🔍</button>
+                <div class="container-busca">
+                    <input type="text" placeholder="Busque aqui seus jogos..." id="pesquisaJogos" class="entrada-busca">
+                    <button class="botao-busca">🔍</button>
                 </div>
                 
-                <nav class="header-actions">
-                    <button class="action-btn add-btn" id="botaoAddJogo" title="Adicionar Jogo">+</button>
-                    <button class="action-btn remove-btn" id="botaoRemoveJogo" title="Remover Jogo">-</button>
-                    <button class="action-btn filter-btn" id="botaoFiltro" title="Filtros">⚙️</button>
-                    <button class="action-btn profile-btn" id="botaoPerfil" title="Perfil">👤</button>
+                <nav class="acoes-cabecalho">
+                      
+                    <button class="botao-acao botao-filtro" id="botaoFiltro" title="Filtros">⚙️</button>
+                    <button class="botao-acao botao-perfil" id="botaoPerfil" title="Perfil">👤</button>
                 </nav>
             </div>
         </header>
         
-        <main class="main-content">
-            <div class="filters-section">
-                <div class="filter-tags">
-                    <button class="filter-tag active" data-category="todos">Todos</button>
-                    <button class="filter-tag" data-category="acao">Ação</button>
-                    <button class="filter-tag" data-category="aventura">Aventura</button>
-                    <button class="filter-tag" data-category="rpg">RPG</button>
-                    <button class="filter-tag" data-category="estrategia">Estratégia</button>
-                    <button class="filter-tag" data-category="esporte">Esporte</button>
+        <main class="conteudo-principal">
+            <div class="secao-filtros">
+                <div class="tags-filtro">
+                    <button class="tag-filtro active" data-category="todos">Todos</button>
+                    <button class="tag-filtro" data-category="acao">Ação</button>
+                    <button class="tag-filtro" data-category="aventura">Aventura</button>
+                    <button class="tag-filtro" data-category="rpg">RPG</button>
+                    <button class="tag-filtro" data-category="estrategia">Estratégia</button>
+                    <button class="tag-filtro" data-category="esporte">Esporte</button>
                 </div>
             </div>
             
-            <section class="games-section">
-                <div class="games-grid" id="jogosContainer">
-                    <!-- Jogo 1 -->
-                    <div class="game-card" data-category="acao">
-                        <div class="game-image-container">
-                            <img src="https://via.placeholder.com/300x400/444444/ffffff?text=Action+Game" alt="Jogo de Ação" class="jogo-imagem">
-                            <button class="favorite-btn" data-game="1">♡</button>
-                        </div>
-                        <div class="game-info">
-                            <h3 class="game-title">Cyber Warriors</h3>
-                            <p class="game-description">Um jogo de ação futurista com combates intensos e gráficos impressionantes.</p>
-                            <div class="game-rating">
-                                <span class="stars">★★★★☆</span>
-                                <span class="rating-text">4.2/5</span>
-                            </div>
-                            <button class="btn-game-details" data-game="1">Detalhes do Jogo</button>
-                        </div>
-                    </div>
-                    
-                    <!-- Jogo 2 -->
-                    <div class="game-card" data-category="aventura">
-                        <div class="game-image-container">
-                            <img src="https://via.placeholder.com/300x400/555555/ffffff?text=Adventure+Game" alt="Jogo de Aventura" class="jogo-imagem">
-                            <button class="favorite-btn" data-game="2">♡</button>
-                        </div>
-                        <div class="game-info">
-                            <h3 class="game-title">Mystic Quest</h3>
-                            <p class="game-description">Uma aventura épica em um mundo mágico cheio de mistérios e criaturas fantásticas.</p>
-                            <div class="game-rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="rating-text">4.8/5</span>
-                            </div>
-                            <button class="btn-game-details" data-game="2">Detalhes do Jogo</button>
-                        </div>
-                    </div>
-                    
-                    <!-- Jogo 3 -->
-                    <div class="game-card" data-category="rpg">
-                        <div class="game-image-container">
-                            <img src="https://via.placeholder.com/300x400/666666/ffffff?text=RPG+Game" alt="Jogo RPG" class="jogo-imagem">
-                            <button class="favorite-btn" data-game="3">♡</button>
-                        </div>
-                        <div class="game-info">
-                            <h3 class="game-title">Dragon's Legacy</h3>
-                            <p class="game-description">Um RPG clássico com sistema de classes, magias e uma história envolvente.</p>
-                            <div class="game-rating">
-                                <span class="stars">★★★★☆</span>
-                                <span class="rating-text">4.5/5</span>
-                            </div>
-                            <button class="btn-game-details" data-game="3">Detalhes do Jogo</button>
-                        </div>
-                    </div>
-                    
-                    <!-- Jogo 4 -->
-                    <div class="game-card" data-category="estrategia">
-                        <div class="game-image-container">
-                            <img src="https://via.placeholder.com/300x400/777777/ffffff?text=Strategy+Game" alt="Jogo de Estratégia" class="jogo-imagem">
-                            <button class="favorite-btn" data-game="4">♡</button>
-                        </div>
-                        <div class="game-info">
-                            <h3 class="game-title">Empire Builder</h3>
-                            <p class="game-description">Construa seu império e domine o mundo através de estratégias inteligentes.</p>
-                            <div class="game-rating">
-                                <span class="stars">★★★★☆</span>
-                                <span class="rating-text">4.1/5</span>
-                            </div>
-                            <button class="btn-game-details" data-game="4">Detalhes do Jogo</button>
-                        </div>
-                    </div>
-                    
-                    <!-- Jogo 5 -->
-                    <div class="game-card" data-category="esporte">
-                        <div class="game-image-container">
-                            <img src="https://via.placeholder.com/300x400/888888/ffffff?text=Sports+Game" alt="Jogo de Esporte" class="jogo-imagem">
-                            <button class="favorite-btn" data-game="5">♡</button>
-                        </div>
-                        <div class="game-info">
-                            <h3 class="game-title">Soccer Champions</h3>
-                            <p class="game-description">O melhor simulador de futebol com times reais e jogabilidade realista.</p>
-                            <div class="game-rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="rating-text">4.7/5</span>
-                            </div>
-                            <button class="btn-game-details" data-game="5">Detalhes do Jogo</button>
-                        </div>
-                    </div>
-                    
-                    <!-- Jogo 6 -->
-                    <div class="game-card" data-category="acao">
-                        <div class="game-image-container">
-                            <img src="https://via.placeholder.com/300x400/999999/ffffff?text=Racing+Game" alt="Jogo de Corrida" class="jogo-imagem">
-                            <button class="favorite-btn" data-game="6">♡</button>
-                        </div>
-                        <div class="game-info">
-                            <h3 class="game-title">Speed Legends</h3>
-                            <p class="game-description">Corridas em alta velocidade com carros esportivos e pistas desafiadoras.</p>
-                            <div class="game-rating">
-                                <span class="stars">★★★★☆</span>
-                                <span class="rating-text">4.3/5</span>
-                            </div>
-                            <button class="btn-game-details" data-game="6">Detalhes do Jogo</button>
-                        </div>
-                    </div>
+            <section class="secao-jogos">
+                <div class="grade-jogos" id="jogosContainer">
+     
+                  <div class="cartao-jogo-vazio" id="cartaoAdicionarJogo">
+    <div class="icone-adicionar">+</div>
+    <p>Adicione jogos à sua biblioteca</p>
+</div>
                 </div>
             </section>
         </main>
         
-        <footer class="main-footer">
-            <div class="footer-content">
+        <footer class="rodape-principal">
+            <div class="conteudo-rodape">
                 <p>&copy; 2025 Biblioteca de Jogos. Todos os direitos reservados.</p>
-                <div class="footer-links">
-                    <a href="#" class="footer-link">Sobre</a>
-                    <a href="#" class="footer-link">Contato</a>
-                    <a href="#" class="footer-link">Termos</a>
-                    <a href="#" class="footer-link">Privacidade</a>
+                <div class="links-rodape">
+                    <a href="#" class="link-rodape">Sobre</a>
+                    <a href="#" class="link-rodape">Contato</a>
+                    <a href="#" class="link-rodape">Termos</a>
+                    <a href="#" class="link-rodape">Privacidade</a>
                 </div>
             </div>
         </footer>
     </div>
-    </body>
+    <script src="/scripts/biblioteca.js"></script>
+</body>
 
 </html>
