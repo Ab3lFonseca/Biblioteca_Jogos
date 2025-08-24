@@ -74,6 +74,25 @@ body {
     border-color: #888888;
     color: #ffffff;
 }
+.botao-detalhes-jogo {
+    background: linear-gradient(135deg, #666666, #777777);
+    border: none;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 10px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.botao-detalhes-jogo:hover {
+    background: linear-gradient(135deg, #666666, #777777);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
 
 
 .principal-perfil {
