@@ -25,37 +25,54 @@ class PerfilUsuario {
         this.carregarDadosUsuario();
         this.renderizarJogosFavoritos();
         this.atualizarEstatisticas();
-        
-        console.log("Usuário carregado:", this.dadosUsuario);
     }
-
 
     setupEventListeners() {
-        const btnInicio = document.getElementById('btnInicio');
-        if (btnInicio) {
-            btnInicio.addEventListener('click', () => {
-                window.location.href = 'telaPrincipal.html'; 
-            });
-        }
-
-        const botaoAlterarAvatar = document.querySelector('.botao-alterar-avatar');
-        if (botaoAlterarAvatar) {
-            botaoAlterarAvatar.addEventListener('click', () => this.mostrarModalAlterarAvatar());
-        }
-
-        const descricaoUsuario = document.getElementById('descricaoUsuario');
-        if (descricaoUsuario) {
-            descricaoUsuario.addEventListener('blur', () => {
-                this.dadosUsuario.descricao = descricaoUsuario.value;
-                this.salvarDadosUsuario();
-            });
-        }
-
-        const nomeUsuario = document.getElementById('nomeUsuario');
-        if (nomeUsuario) {
-            nomeUsuario.addEventListener('click', () => this.editarNomeUsuario());
-        }
+    const btnInicio = document.getElementById('btnInicio');
+    if (btnInicio) {
+        btnInicio.addEventListener('click', () => {
+            window.location.href = 'telaPrincipal.html'; 
+        });
     }
+
+    // Seleciona botão após DOM estar totalmente carregado
+    const botaoAlterarAvatar = document.querySelector('.botao-alterar-avatar');
+    if (botaoAlterarAvatar) {
+        botaoAlterarAvatar.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.mostrarModalAlterarAvatar();
+        });
+    } else {
+        console.warn('Botão de alterar avatar não encontrado no DOM');
+    }
+
+    const descricaoUsuario = document.getElementById('descricaoUsuario');
+    if (descricaoUsuario) {
+        descricaoUsuario.addEventListener('blur', () => {
+            this.dadosUsuario.descricao = descricaoUsuario.value;
+            this.salvarDadosUsuario();
+        });
+    }
+
+    const nomeUsuario = document.getElementById('nomeUsuario');
+    if (nomeUsuario) {
+        nomeUsuario.addEventListener('click', () => this.editarNomeUsuario());
+    }
+}
+
+mostrarModalAlterarAvatar() {
+    // Remove modal antigo se existir
+    const modalExistente = document.querySelector('.modal-overlay');
+    if (modalExistente) modalExistente.remove();
+
+    const modal = this.criarModalAlterarAvatar();
+    document.body.appendChild(modal);
+
+    // Garante que o modal fique visível
+    modal.style.display = 'flex';
+    modal.style.zIndex = 9999;
+}
+
 
     carregarDadosUsuario() {
         const nomeUsuario = document.getElementById('nomeUsuario');
@@ -64,7 +81,7 @@ class PerfilUsuario {
 
         if (nomeUsuario) nomeUsuario.textContent = this.dadosUsuario.nome;
         if (descricaoUsuario) descricaoUsuario.value = this.dadosUsuario.descricao;
-        if (imagemPerfil) imagemPerfil.src = this.dadosUsuario.avatar;
+        if (imagemPerfil) imagemPerfil.src = this.dadosUsuario.avatar || '../itensExternos/fotoperfilindefinida.png';
     }
 
     editarNomeUsuario() {
@@ -124,23 +141,17 @@ class PerfilUsuario {
                 </div>
                 <div class="modal-corpo">
                     <div class="preview-avatar">
-                        <img src="${this.dadosUsuario.avatar}" alt="Preview" class="imagem-preview">
+                        <img src="${this.dadosUsuario.avatar || '../itensExternos/fotoperfilindefinida.png'}" alt="Preview" class="imagem-preview">
                     </div>
                     <div class="grupo-entrada">
                         <label for="urlAvatar">URL da Imagem</label>
-                        <input type="url" id="urlAvatar" value="${this.dadosUsuario.avatar}" placeholder="https://exemplo.co/itensIntenos/avatar.png">
+                        <input type="url" id="urlAvatar" value="${this.dadosUsuario.avatar}" placeholder="https://exemplo.com/avatar.png">
                     </div>
-                    <div class="avatares-predefinidos">
-                        <h3>Ou escolha um avatar pré-definido:</h3>
-                        <div class="grid-avatares">
-                            <img src="https://via.placeholder.co/150x150/FF6B6B/ffffff?text=😊" alt="Avatar 1" class="avatar-opcao">
-                            <img src="https://via.placeholder.co/150x150/4ECDC4/ffffff?text=🎮" alt="Avatar 2" class="avatar-opcao">
-                            <img src="https://via.placeholder.co/150x150/45B7D1/ffffff?text=🚀" alt="Avatar 3" class="avatar-opcao">
-                            <img src="https://via.placeholder.co/150x150/96CEB4/ffffff?text=🎯" alt="Avatar 4" class="avatar-opcao">
-                            <img src="https://via.placeholder.co/150x150/FFEAA7/ffffff?text=⭐" alt="Avatar 5" class="avatar-opcao">
-                            <img src="https://via.placeholder.co/150x150/DDA0DD/ffffff?text=🎨" alt="Avatar 6" class="avatar-opcao">
-                        </div>
+                    <div class="grupo-entrada">
+                        <label for="uploadAvatar">Ou envie do seu computador:</label>
+                        <input type="file" id="uploadAvatar" accept="image/*">
                     </div>
+                   
                     <div class="botoes-modal">
                         <button type="button" class="botao-cancelar">Cancelar</button>
                         <button type="button" class="botao-confirmar">Salvar Avatar</button>
@@ -153,6 +164,7 @@ class PerfilUsuario {
         const botaoCancelar = modal.querySelector('.botao-cancelar');
         const botaoConfirmar = modal.querySelector('.botao-confirmar');
         const inputUrl = modal.querySelector('#urlAvatar');
+        const inputUpload = modal.querySelector('#uploadAvatar');
         const imagemPreview = modal.querySelector('.imagem-preview');
         const avatarOpcoes = modal.querySelectorAll('.avatar-opcao');
 
@@ -162,16 +174,31 @@ class PerfilUsuario {
             if (e.target === modal) this.fecharModal(modal);
         });
 
+        // Atualiza preview via URL
         inputUrl.addEventListener('input', (e) => {
             const url = e.target.value;
             if (url) {
                 imagemPreview.src = url;
                 imagemPreview.onerror = () => {
-                    imagemPreview.src = 'https://via.placeholder.co/150x150/333333/ffffff?text=Erro';
+                    imagemPreview.src = '../itensExternos/fotoperfilindefinida.png';
                 };
             }
         });
 
+        // Upload do computador
+        inputUpload.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    imagemPreview.src = reader.result;
+                    inputUrl.value = reader.result; // salva base64
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Avatares pré-definidos
         avatarOpcoes.forEach(avatar => {
             avatar.addEventListener('click', () => {
                 avatarOpcoes.forEach(a => a.classList.remove('selecionado'));
@@ -220,37 +247,35 @@ class PerfilUsuario {
     }
 
     criarCardJogoFavorito(jogo) {
-    const card = document.createElement('div');
-    card.className = 'cartao-jogo';
-    card.dataset.id = jogo.id;
+        const card = document.createElement('div');
+        card.className = 'cartao-jogo';
+        card.dataset.id = jogo.id;
 
-    card.innerHTML = `
-        <img src="${jogo.imagem || '../itensExternos/fotoperfilindefinida.png'}" 
-             alt="${jogo.titulo}" 
-             class="imagem-jogo" 
-             onerror="this.src='../itensExternos/fotoperfilindefinida.png'">
-        <div class="informacoes-jogo">
-            <h4>${jogo.titulo}</h4>
-            <button class="botao-padrao botao-detalhes-jogo" data-game="${jogo.id}">
-                Ver Detalhes
-            </button>
-        </div>
-    `;
+        card.innerHTML = `
+            <img src="${jogo.imagem || '../itensExternos/fotoperfilindefinida.png'}" 
+                 alt="${jogo.titulo}" 
+                 class="imagem-jogo" 
+                 onerror="this.src='../itensExternos/fotoperfilindefinida.png'">
+            <div class="informacoes-jogo">
+                <h4>${jogo.titulo}</h4>
+                <button class="botao-padrao botao-detalhes-jogo" data-game="${jogo.id}">
+                    Ver Detalhes
+                </button>
+            </div>
+        `;
 
-    const botaoDetalhes = card.querySelector('.botao-detalhes-jogo');
-    botaoDetalhes.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.irParaDetalhesJogo(jogo.id);
-    });
+        const botaoDetalhes = card.querySelector('.botao-detalhes-jogo');
+        botaoDetalhes.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.irParaDetalhesJogo(jogo.id);
+        });
 
-    card.addEventListener('click', () => {
-        this.irParaDetalhesJogo(jogo.id);
-    });
+        card.addEventListener('click', () => {
+            this.irParaDetalhesJogo(jogo.id);
+        });
 
-    return card;
-}
-
-
+        return card;
+    }
 
     irParaDetalhesJogo(id) {
         localStorage.setItem('jogoAtualId', id);

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Jogo - Biblioteca de Jogos</title>
+    <link rel="stylesheet" href="/styles/estilos-detalhes-jogo.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="cabecalho-principal">
+            <div class="conteudo-cabecalho">
+                <h1>Biblioteca de Jogos</h1>
+                <nav class="navegacao-cabecalho">
+                    <button class="botao-navegacao" id="btnInicio">Início</button>
+                    <button class="botao-navegacao" id="btnPerfil">Perfil</button>
+                    <button class="botao-navegacao" id="btnVoltar">← Voltar</button>
+                </nav>
+            </div>
+        </header>
+
+        <main class="conteudo-principal">
+            <div class="container-detalhes-jogo">
+ 
+                <section class="secao-principal-jogo">
+                    <div class="imagem-principal-container">
+                        <img id="imagemPrincipalJogo" src="" alt="Imagem do jogo" class="imagem-principal-jogo">
+                        <button class="botao-favorito-grande" id="botaoFavoritoGrande">♡</button>
+                    </div>
+                    
+                    <div class="informacoes-principais">
+                        <h1 id="tituloJogo" class="titulo-principal">Carregando...</h1>
+                        <div class="metadados-jogo">
+                            <span class="categoria-jogo" id="categoriaJogo">Categoria</span>
+                            <span class="data-adicao" id="dataAdicao">Adicionado em: --</span>
+                        </div>
+                        
+                        <div class="avaliacao-principal">
+                            <div class="estrelas-grandes" id="estrelasGrandes">☆☆☆☆☆</div>
+                            <span class="texto-avaliacao-grande" id="textoAvaliacaoGrande">0/5</span>
+                        </div>
+                        
+                        <p id="descricaoJogo" class="descricao-principal">Carregando descrição...</p>
+                        
+                        <div class="acoes-jogo">
+                            <button class="botao-acao-principal" id="botaoEditarJogo">✏️ Editar Jogo</button>
+                            <button class="botao-acao-secundario" id="botaoRemoverJogo">🗑️ Remover Jogo</button>
+                        </div>
+                    </div>
+                </section>
+
+        
+                <section class="secao-galeria">
+                    <h2>Galeria de Imagens</h2>
+                    <div class="galeria-imagens" id="galeriaImagens">
+                        <div class="item-galeria principal">
+                            <img id="imagemGaleria1" src="" alt="Imagem do jogo">
+                        </div>
+                        <div class="placeholder-galeria">
+                            <span>+</span>
+                            <p>Adicionar mais imagens</p>
+                        </div>
+                    </div>
+                </section>
+
+ 
+                <section class="secao-avaliacoes">
+                    <h2>Sua Avaliação</h2>
+                    <div class="container-avaliacao">
+                        <div class="estrelas-interativas" id="estrelasInterativas">
+                            <span class="estrela" data-rating="1">☆</span>
+                            <span class="estrela" data-rating="2">☆</span>
+                            <span class="estrela" data-rating="3">☆</span>
+                            <span class="estrela" data-rating="4">☆</span>
+                            <span class="estrela" data-rating="5">☆</span>
+                        </div>
+                        <p class="texto-avaliacao-interativa">Clique nas estrelas para avaliar</p>
+                    </div>
+                </section>
+
+     
+                <section class="secao-comentarios">
+                    <h2>Suas Anotações</h2>
+                    <div class="container-comentarios">
+                        <textarea 
+                            id="anotacoesPessoais" 
+                            class="textarea-anotacoes" 
+                            placeholder="Escreva suas impressões sobre o jogo, dicas, ou qualquer anotação pessoal..."
+                            rows="6"
+                        ></textarea>
+                        <button class="botao-salvar-anotacoes" id="botaoSalvarAnotacoes">Salvar Anotações</button>
+                    </div>
+                </section>
+
+
+               
+    <script src="/scripts/detalhes-jogo.js"></script>
+</body>
+
+</html>
+
