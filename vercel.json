@@ -1,0 +1,30 @@
+{
+  "builds": [
+    {
+      "src": "Biblioteca_Jogos/pages/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "/Biblioteca_Jogos/styles/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/styles/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "itensEsternos/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "src/pages/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "src/pages/$1"
+    }
+  ]
+}
