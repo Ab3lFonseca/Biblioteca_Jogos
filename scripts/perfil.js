@@ -131,34 +131,43 @@ mostrarModalAlterarAvatar() {
     }
 
     criarModalAlterarAvatar() {
-        const modal = document.createElement('div');
-        modal.className = 'modal-overlay';
-        modal.innerHTML = `
-            <div class="modal-conteudo">
-                <div class="modal-cabecalho">
-                    <h2>Alterar Avatar</h2>
-                    <button class="botao-fechar-modal">&times;</button>
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+        <div class="modal-conteudo">
+            <div class="modal-cabecalho">
+                <h2>Alterar Avatar</h2>
+                <button class="botao-fechar-modal">&times;</button>
+            </div>
+            <div class="modal-corpo">
+                <div class="preview-avatar">
+                    <img src="${this.dadosUsuario.avatar || '../itensExternos/fotoperfilindefinida.png'}" 
+                         alt="Preview" class="imagem-preview">
                 </div>
-                <div class="modal-corpo">
-                    <div class="preview-avatar">
-                        <img src="${this.dadosUsuario.avatar || '../itensExternos/fotoperfilindefinida.png'}" alt="Preview" class="imagem-preview">
-                    </div>
-                    <div class="grupo-entrada">
-                        <label for="urlAvatar">URL da Imagem</label>
-                        <input type="url" id="urlAvatar" value="${this.dadosUsuario.avatar}" placeholder="https://exemplo.com/avatar.png">
-                    </div>
-                    <div class="grupo-entrada">
-                        <label for="uploadAvatar">Ou envie do seu computador:</label>
-                        <input type="file" id="uploadAvatar" accept="image/*">
-                    </div>
-                   
-                    <div class="botoes-modal">
-                        <button type="button" class="botao-cancelar">Cancelar</button>
-                        <button type="button" class="botao-confirmar">Salvar Avatar</button>
-                    </div>
+                <div class="grupo-entrada">
+                    <label for="urlAvatar">URL da Imagem</label>
+                    <input type="url" id="urlAvatar" 
+                           value="${this.dadosUsuario.avatar}" 
+                           placeholder="https://exemplo.com/avatar.png">
+                </div>
+                <div class="grupo-entrada">
+                    <label for="uploadAvatar">Ou envie do seu computador:</label>
+                    <input type="file" id="uploadAvatar" accept="image/*">
+                </div>
+                
+                
+
+                <div class="botoes-modal">
+                    <button type="button" class="botao-cancelar">Cancelar</button>
+                    <button type="button" class="botao-confirmar">Salvar Avatar</button>
                 </div>
             </div>
-        `;
+        </div>
+    `;
+
+  
+
+
 
         const botaoFechar = modal.querySelector('.botao-fechar-modal');
         const botaoCancelar = modal.querySelector('.botao-cancelar');
@@ -198,15 +207,7 @@ mostrarModalAlterarAvatar() {
             }
         });
 
-        // Avatares pré-definidos
-        avatarOpcoes.forEach(avatar => {
-            avatar.addEventListener('click', () => {
-                avatarOpcoes.forEach(a => a.classList.remove('selecionado'));
-                avatar.classList.add('selecionado');
-                inputUrl.value = avatar.src;
-                imagemPreview.src = avatar.src;
-            });
-        });
+      
 
         botaoConfirmar.addEventListener('click', () => {
             const novaUrl = inputUrl.value || this.dadosUsuario.avatar;
@@ -297,66 +298,7 @@ mostrarModalAlterarAvatar() {
     }
 }
 
-const estilosPerfilModal = `
-    .modal-corpo {
-        padding: 30px;
-    }
-    .preview-avatar {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    .imagem-preview {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid rgba(255, 255, 255, 0.2);
-    }
-    .avatares-predefinidos {
-        margin: 20px 0;
-    }
-    .avatares-predefinidos h3 {
-        color: #ffffff;
-        font-size: 1rem;
-        margin-bottom: 15px;
-    }
-    .grid-avatares {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-    }
-    .avatar-opcao {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        cursor: pointer;
-        border: 2px solid transparent;
-        transition: all 0.3s ease;
-    }
-    .avatar-opcao:hover {
-        border-color: rgba(255, 255, 255, 0.3);
-        transform: scale(1.1);
-    }
-    .avatar-opcao.selecionado {
-        border-color: #888888;
-        transform: scale(1.1);
-    }
-    .input-editar-nome:focus {
-        border-color: #888888 !important;
-        box-shadow: 0 0 0 3px rgba(136, 136, 136, 0.1);
-    }
-`;
-
-function injetarEstilosPerfilModal() {
-    if (!document.getElementById('estilos-perfil-modal')) {
-        const style = document.createElement('style');
-        style.id = 'estilos-perfil-modal';
-        style.textContent = estilosPerfilModal;
-        document.head.appendChild(style);
-    }
-}
 
 document.addEventListener('DOMContentLoaded', () => {
-    injetarEstilosPerfilModal();
     new PerfilUsuario();
 });

@@ -252,6 +252,167 @@ body {
 }
 
 
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.modal-conteudo {
+    background: #2a2a2a;
+    padding: 25px;
+    border-radius: 12px;
+    width: 360px;
+    max-width: 90%;
+    color: white;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    animation: fadeInUp 0.3s ease;
+    position: relative;
+}
+
+.modal-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-cabecalho h2 {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.botao-fechar-modal {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+.grupo-entrada {
+    margin: 15px 0;
+    text-align: left;
+}
+
+.grupo-entrada label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.grupo-entrada input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    background: #3a3a3a;
+    color: white;
+}
+
+.botoes-modal {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.botao-cancelar,
+.botao-confirmar {
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}
+
+.botao-cancelar {
+    background: #555;
+    color: #fff;
+}
+
+.botao-confirmar {
+    background: linear-gradient(135deg, #666, #888);
+    color: #fff;
+}
+
+
+.modal-corpo {
+        padding: 30px;
+    }
+    .preview-avatar {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .imagem-preview {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid rgba(255, 255, 255, 0.2);
+    }
+    .avatares-predefinidos {
+        margin: 20px 0;
+    }
+    .avatares-predefinidos h3 {
+        color: #ffffff;
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+    .grid-avatares {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    .avatar-opcao {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+    .avatar-opcao:hover {
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+    }
+    .avatar-opcao.selecionado {
+        border-color: #888888;
+        transform: scale(1.1);
+    }
+    .input-editar-nome:focus {
+        border-color: #888888 !important;
+        box-shadow: 0 0 0 3px rgba(136, 136, 136, 0.1);
+    }
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.imagem-jogo {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+}
+
+
+
 @media (max-width: 1024px) {
     .conteudo-cabecalho {
         padding: 15px 20px;

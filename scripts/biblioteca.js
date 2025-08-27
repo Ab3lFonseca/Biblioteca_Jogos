@@ -95,10 +95,7 @@ class BibliotecaJogos {
                         <input type="url" id="imagemJogo" placeholder="https://exemplo.com/imagem.jpg">
                     </div>
                     
-                    <div class="grupo-entrada">
-                        <label for="avaliacaoJogo">Avaliação (1-5)</label>
-                        <input type="number" id="avaliacaoJogo" min="1" max="5" value="5">
-                    </div>
+
                     
                     <div class="botoes-modal">
                         <button type="button" class="botao-cancelar">Cancelar</button>
@@ -138,7 +135,6 @@ class BibliotecaJogos {
             descricao: formulario.descricaoJogo.value,
             categoria: formulario.categoriaJogo.value,
             imagem: formulario.imagemJogo.value || "https://placehold.co/300x400?text=Sem+Imagem",
-            avaliacao: parseInt(formulario.avaliacaoJogo.value),
             dataAdicao: new Date().toISOString(),
             favorito: false
         };
@@ -212,38 +208,54 @@ class BibliotecaJogos {
     }
 
     criarCardJogo(jogo) {
-        const card = document.createElement('div');
-        card.className = 'cartao-jogo';
-        card.dataset.category = jogo.categoria;
-        card.dataset.id = jogo.id;
+    const card = document.createElement('div');
+    card.className = 'cartao-jogo';
+    card.dataset.category = jogo.categoria;
+    card.dataset.id = jogo.id;
 
-        card.innerHTML = `
-            <div class="container-imagem-jogo">
-                <img src="${jogo.imagem}" alt="${jogo.titulo}"  class="imagem-jogo"  onerror="this.src='https://placehold.co/200x250?text=Erro+Imagem'">
-            </div>
-            <div class="informacoes-jogo">
-                <h4 class="titulo-jogo">${jogo.titulo}</h4>
-                <p class="descricao-jogo">${jogo.descricao}</p>
-                <div class="avaliacao-jogo">
-                    <div class="estrelas">${'★'.repeat(jogo.avaliacao)}${'☆'.repeat(5 - jogo.avaliacao)}</div>
-                    <span class="texto-avaliacao">${jogo.avaliacao}/5</span>
-                </div>
-                <button class="botao-detalhes-jogo" data-game="${jogo.id}">Detalhes do Jogo</button>
-            </div>
-        `;
+    // Suporte a várias imagens separadas por vírgula
+    const imagens = jogo.imagem.split(',').map(img => img.trim());
 
-        const botaoDetalhes = card.querySelector('.botao-detalhes-jogo');
-        botaoDetalhes.addEventListener('click', (e) => {
-            e.stopPropagation();
-            this.irParaDetalhesJogo(jogo.id);
-        });
+    card.innerHTML = `
+    <div class="carrossel-imagens">
+        ${imagens.map((img, i) => `
+            <img src="${img}" alt="${jogo.titulo}" 
+                 class="imagem-jogo ${i === 0 ? 'ativa' : ''}" 
+                 onerror="this.src='https://placehold.co/200x250?text=Erro+Imagem'">
+        `).join('')}
+    </div>
+    <div class="informacoes-jogo">
+        <h4 class="titulo-jogo">${jogo.titulo}</h4>
+        <p class="descricao-jogo">${jogo.descricao}</p>
+        <button class="botao-detalhes-jogo" data-game="${jogo.id}">Detalhes</button>
+    </div>
+`;
 
-        card.addEventListener('click', () => {
-            this.irParaDetalhesJogo(jogo.id);
-        });
 
-        return card;
+    // Troca automática de imagens
+    if (imagens.length > 1) {
+        let index = 0;
+        setInterval(() => {
+            const imgs = card.querySelectorAll('.imagem-jogo');
+            imgs.forEach(img => img.classList.remove('ativa'));
+            index = (index + 1) % imgs.length;
+            imgs[index].classList.add('ativa');
+        }, 3000);
     }
+
+    const botaoDetalhes = card.querySelector('.botao-detalhes-jogo');
+    botaoDetalhes.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.irParaDetalhesJogo(jogo.id);
+    });
+
+    card.addEventListener('click', () => {
+        this.irParaDetalhesJogo(jogo.id);
+    });
+
+    return card;
+}
+
 
     irParaDetalhesJogo(id) {
         localStorage.setItem('jogoAtualId', id);
@@ -265,180 +277,7 @@ class BibliotecaJogos {
     }
 }
 
-// 🔹 estilos do modal que estavam faltando
-const estilosModal = `
-    .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-        animation: fadeIn 0.3s ease;
-    }
-
-    .modal-conteudo {
-        background: rgba(40, 40, 40, 0.95);
-        border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        width: 90%;
-        max-width: 500px;
-        max-height: 90vh;
-        overflow-y: auto;
-        animation: slideIn 0.3s ease;
-    }
-
-    .modal-cabecalho {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 30px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .modal-cabecalho h2 {
-        color: #ffffff;
-        font-size: 1.5rem;
-        margin: 0;
-    }
-
-    .botao-fechar-modal {
-        background: none;
-        border: none;
-        color: #999999;
-        font-size: 2rem;
-        cursor: pointer;
-        padding: 0;
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-    }
-
-    .botao-fechar-modal:hover {
-        color: #ffffff;
-        background: rgba(255, 255, 255, 0.1);
-    }
-
-    .formulario-modal {
-        padding: 30px;
-    }
-
-    .formulario-modal .grupo-entrada {
-        margin-bottom: 20px;
-    }
-
-    .formulario-modal label {
-        display: block;
-        color: #c0c0c0;
-        font-size: 0.9rem;
-        font-weight: 600;
-        margin-bottom: 8px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    .formulario-modal input,
-    .formulario-modal textarea,
-    .formulario-modal select {
-        width: 100%;
-        padding: 12px 16px;
-        background: rgba(20, 20, 20, 0.8);
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        color: #ffffff;
-        font-size: 1rem;
-        outline: none;
-        transition: all 0.3s ease;
-    }
-
-    .formulario-modal input:focus,
-    .formulario-modal textarea:focus,
-    .formulario-modal select:focus {
-        border-color: #888888;
-        background: rgba(30, 30, 30, 0.9);
-        box-shadow: 0 0 0 3px rgba(136, 136, 136, 0.1);
-    }
-
-    .formulario-modal textarea {
-        resize: vertical;
-        min-height: 80px;
-    }
-
-    .botoes-modal {
-        display: flex;
-        gap: 15px;
-        justify-content: flex-end;
-        margin-top: 30px;
-    }
-
-    .botao-cancelar,
-    .botao-confirmar {
-        padding: 12px 24px;
-        border: none;
-        border-radius: 8px;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    .botao-cancelar {
-        background: rgba(60, 60, 60, 0.8);
-        color: #e0e0e0;
-    }
-
-    .botao-cancelar:hover {
-        background: rgba(80, 80, 80, 0.9);
-    }
-
-    .botao-confirmar {
-        background: linear-gradient(135deg, #666666, #777777);
-        color: #ffffff;
-    }
-
-    .botao-confirmar:hover {
-        background: linear-gradient(135deg, #777777, #888888);
-        transform: translateY(-1px);
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translateY(-30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-`;
-
-
-function injetarEstilosModal() {
-    if (!document.getElementById('estilos-modal')) {
-        const style = document.createElement('style');
-        style.id = 'estilos-modal';
-        style.textContent = estilosModal;
-        document.head.appendChild(style);
-    }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-    injetarEstilosModal();
     new BibliotecaJogos();
 });
+
