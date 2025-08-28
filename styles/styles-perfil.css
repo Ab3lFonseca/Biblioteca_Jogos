@@ -209,47 +209,6 @@ body {
 }
 
 
-.secao-jogos {
-    margin-top: 40px;
-}
-
-.secao-jogos h3 {
-    font-size: 1.4rem;
-    color: #ffffff;
-    margin-bottom: 20px;
-}
-
-.grade-jogos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-}
-
-.cartao-jogo-vazio {
-    background: rgba(40, 40, 40, 0.6);
-    border: 2px dashed rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    padding: 40px 20px;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.cartao-jogo-vazio:hover {
-    border-color: rgba(255, 255, 255, 0.4);
-    background: rgba(50, 50, 50, 0.8);
-}
-
-.icone-adicionar {
-    font-size: 2rem;
-    color: #888888;
-    margin-bottom: 10px;
-}
-
-.cartao-jogo-vazio p {
-    color: #b0b0b0;
-    font-size: 0.9rem;
-}
 
 
 .modal-overlay {
