@@ -265,14 +265,13 @@ body {
 
 .imagem-jogo {
     width: 100%;
-    height: 250px;
-    object-fit: cover;
-    object-position: center;   /* centraliza o foco */
+    height: 100%;              /* ocupa todo o espaço do card */
+    object-fit: cover;         /* mantém proporção e corta excesso */
+    object-position: center;   /* foca o centro da imagem */
     display: block;
-    margin-inline: auto;
     border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
 }
+
 
 /* Grade dos jogos favoritos no perfil */
 .grade-favoritos {
@@ -283,10 +282,9 @@ body {
     justify-items: center; /* Centraliza os cards dentro da grade */
 }
 
-/* Card de jogo favorito */
 .cartao-favorito {
     width: 220px;
-    height: 280px;
+    height: auto;              /* deixa a altura se ajustar ao conteúdo */
     background: rgba(30, 30, 30, 0.95);
     border-radius: 16px;
     overflow: hidden;
@@ -296,8 +294,9 @@ body {
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
-    padding: 15px;
+    padding: 0;                /* tira o padding interno que empurra a imagem */
 }
+
 
 .cartao-favorito:hover {
     transform: translateY(-6px);
