@@ -264,6 +264,8 @@ body {
 
 /* Nome do jogo */
 .cartao-favorito .titulo-jogo {
+    dispay: flex;
+    align-itens: center;
     font-size: 1rem;
     font-weight: 600;
     color: #f0f0f0;
