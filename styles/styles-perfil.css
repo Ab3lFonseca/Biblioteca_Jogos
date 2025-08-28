@@ -262,6 +262,18 @@ body {
     justify-content: center;
     z-index: 10000;
 }
+
+.imagem-jogo {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;   /* centraliza o foco */
+    display: block;
+    margin-inline: auto;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+}
+
 /* Grade dos jogos favoritos no perfil */
 .grade-favoritos {
     display: grid;
@@ -290,17 +302,6 @@ body {
 .cartao-favorito:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 24px rgba(0,0,0,0.5);
-}
-
-/* Imagem do jogo favorito */
-.cartao-favorito .imagem-jogo {
-    width: 180px;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-    margin-bottom: 12px;
-    background: #111; /* fundo neutro p/ imagens transparentes */
 }
 
 /* Nome do jogo */
