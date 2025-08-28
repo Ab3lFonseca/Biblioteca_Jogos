@@ -48,6 +48,11 @@ class DetalhesJogo {
             });
         }
 
+         const botaoFavorito = document.getElementById('botaoFavoritoGrande');
+    if (botaoFavorito) {
+        botaoFavorito.addEventListener('click', () => this.toggleFavorito());
+    }
+
 
        
 
@@ -89,6 +94,19 @@ class DetalhesJogo {
             });
         }
     }
+
+    atualizarBotaoFavorito() {
+    const botaoFavorito = document.getElementById('botaoFavoritoGrande');
+    if (!botaoFavorito) return;
+
+    if (this.jogoAtual.favorito) {
+        botaoFavorito.textContent = "❤"; // marcado
+        botaoFavorito.classList.add("favorited");
+    } else {
+        botaoFavorito.textContent = "♡"; // vazio
+        botaoFavorito.classList.remove("favorited");
+    }
+}
 
     renderizarDetalhes() {
         if (!this.jogoAtual) return;
