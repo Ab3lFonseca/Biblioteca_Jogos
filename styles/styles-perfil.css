@@ -262,26 +262,59 @@ body {
     justify-content: center;
     z-index: 10000;
 }
-.cartao-jogo {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza horizontalmente */
-    justify-content: center; /* Centraliza verticalmente */
-    background: rgba(40, 40, 40, 0.8);
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+/* Grade dos jogos favoritos no perfil */
+.grade-favoritos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+    justify-items: center; /* Centraliza os cards dentro da grade */
 }
 
-.imagem-jogo {
-    width: 180px;   /* tamanho fixo para ficar proporcional */
-    height: 250px;
+/* Card de jogo favorito */
+.cartao-favorito {
+    width: 220px;
+    height: 280px;
+    background: rgba(30, 30, 30, 0.95);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    padding: 15px;
+}
+
+.cartao-favorito:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.5);
+}
+
+/* Imagem do jogo favorito */
+.cartao-favorito .imagem-jogo {
+    width: 180px;
+    height: 220px;
     object-fit: cover;
     border-radius: 12px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-    display: block;
-    margin: 0 auto; /* garante centralização */
+    margin-bottom: 12px;
+    background: #111; /* fundo neutro p/ imagens transparentes */
 }
+
+/* Nome do jogo */
+.cartao-favorito .titulo-jogo {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f0f0f0;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
 
 .modal-conteudo {
     background: #2a2a2a;
