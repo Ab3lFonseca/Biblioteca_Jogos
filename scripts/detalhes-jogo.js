@@ -15,9 +15,9 @@ class DetalhesJogo {
 
     carregarJogo() {
         this.jogoAtual = this.jogos.find(jogo => jogo.id === this.jogoAtualId);
-        
+
         if (!this.jogoAtual) {
-            
+
             alert('Jogo não encontrado!');
             window.location.href = '/pages/telaPrincipal.html';
             return;
@@ -25,7 +25,7 @@ class DetalhesJogo {
     }
 
     setupEventListeners() {
-     
+
         const btnInicio = document.getElementById('btnInicio');
         const btnPerfil = document.getElementById('btnPerfil');
         const btnVoltar = document.getElementById('btnVoltar');
@@ -53,10 +53,6 @@ class DetalhesJogo {
         botaoFavorito.addEventListener('click', () => this.toggleFavorito());
     }
 
-
-       
-
- 
         const estrelas = document.querySelectorAll('.estrela');
         estrelas.forEach((estrela, index) => {
             estrela.addEventListener('click', () => this.avaliarJogo(index + 1));
@@ -68,7 +64,6 @@ class DetalhesJogo {
             containerEstrelas.addEventListener('mouseleave', () => this.resetEstrelas());
         }
 
-
         const botaoEditarJogo = document.getElementById('botaoEditarJogo');
         const botaoRemoverJogo = document.getElementById('botaoRemoverJogo');
 
@@ -79,7 +74,6 @@ class DetalhesJogo {
         if (botaoRemoverJogo) {
             botaoRemoverJogo.addEventListener('click', () => this.confirmarRemocaoJogo());
         }
-
 
         const botaoSalvarAnotacoes = document.getElementById('botaoSalvarAnotacoes');
         if (botaoSalvarAnotacoes) {
@@ -111,7 +105,6 @@ class DetalhesJogo {
     renderizarDetalhes() {
         if (!this.jogoAtual) return;
 
-
         const tituloJogo = document.getElementById('tituloJogo');
         const categoriaJogo = document.getElementById('categoriaJogo');
         const dataAdicao = document.getElementById('dataAdicao');
@@ -124,7 +117,6 @@ class DetalhesJogo {
             dataAdicao.textContent = `Adicionado em: ${data}`;
         }
         if (descricaoJogo) descricaoJogo.textContent = this.jogoAtual.descricao;
-
 
         const imagemPrincipal = document.getElementById('imagemPrincipalJogo');
         const imagemGaleria1 = document.getElementById('imagemGaleria1');
@@ -139,25 +131,17 @@ class DetalhesJogo {
             imagemGaleria1.alt = this.jogoAtual.titulo;
         }
 
-   
         this.atualizarAvaliacaoDisplay();
 
-
         this.atualizarBotaoFavorito();
-
 
         const textareaAnotacoes = document.getElementById('anotacoesPessoais');
         if (textareaAnotacoes) {
             textareaAnotacoes.value = this.jogoAtual.anotacoes || '';
         }
 
-
- 
-
         document.title = `${this.jogoAtual.titulo} - Biblioteca de Jogos`;
     }
-
-    
 
     resetEstrelas() {
         const estrelas = document.querySelectorAll('.estrela');
@@ -189,7 +173,6 @@ class DetalhesJogo {
         this.jogoAtual.avaliacao = rating;
         this.salvarJogo();
         this.atualizarAvaliacaoDisplay();
-        
 
         const textoAvaliacao = document.querySelector('.texto-avaliacao-interativa');
         if (textoAvaliacao) {
@@ -206,21 +189,18 @@ class DetalhesJogo {
         this.atualizarBotaoFavorito();
     }
 
-    
-
     salvarAnotacoes() {
         const textareaAnotacoes = document.getElementById('anotacoesPessoais');
         if (textareaAnotacoes) {
             this.jogoAtual.anotacoes = textareaAnotacoes.value;
             this.salvarJogo();
-            
 
             const botaoSalvar = document.getElementById('botaoSalvarAnotacoes');
             if (botaoSalvar) {
                 const textoOriginal = botaoSalvar.textContent;
                 botaoSalvar.textContent = 'Salvo!';
                 botaoSalvar.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
-                
+
                 setTimeout(() => {
                     botaoSalvar.textContent = textoOriginal;
                     botaoSalvar.style.background = '';
@@ -248,12 +228,12 @@ class DetalhesJogo {
                         <label for="tituloJogoEdit">Título do Jogo</label>
                         <input type="text" id="tituloJogoEdit" value="${this.jogoAtual.titulo}" required>
                     </div>
-                    
+
                     <div class="grupo-entrada">
                         <label for="descricaoJogoEdit">Descrição</label>
                         <textarea id="descricaoJogoEdit" rows="3" required>${this.jogoAtual.descricao}</textarea>
                     </div>
-                    
+
                     <div class="grupo-entrada">
                         <label for="categoriaJogoEdit">Categoria</label>
                         <select id="categoriaJogoEdit" required>
@@ -264,12 +244,12 @@ class DetalhesJogo {
                             <option value="esporte" ${this.jogoAtual.categoria === 'esporte' ? 'selected' : ''}>Esporte</option>
                         </select>
                     </div>
-                    
+
                     <div class="grupo-entrada">
                         <label for="imagemJogoEdit">URL da Imagem</label>
                         <input type="url" id="imagemJogoEdit" value="${this.jogoAtual.imagem}">
                     </div>
-                    
+
                     <div class="botoes-modal">
                         <button type="button" class="botao-cancelar">Cancelar</button>
                         <button type="submit" class="botao-confirmar">Salvar Alterações</button>
@@ -277,7 +257,6 @@ class DetalhesJogo {
                 </form>
             </div>
         `;
-
 
         const botaoFechar = modal.querySelector('.botao-fechar-modal');
         const botaoCancelar = modal.querySelector('.botao-cancelar');
@@ -310,7 +289,7 @@ class DetalhesJogo {
 
     confirmarRemocaoJogo() {
         const confirmacao = confirm(`Tem certeza que deseja remover "${this.jogoAtual.titulo}" da sua biblioteca?`);
-        
+
         if (confirmacao) {
             this.removerJogo();
         }
@@ -320,13 +299,10 @@ class DetalhesJogo {
     this.jogos = this.jogos.filter(jogo => jogo.id !== this.jogoAtualId);
     localStorage.setItem('jogos', JSON.stringify(this.jogos));
     localStorage.removeItem('jogoAtualId');
-    
+
     alert('Jogo removido com sucesso!');
     window.location.href = '/pages/telaPrincipal.html'; // ✅ corrigido
 }
-
-
-    
 
     fecharModal(modal) {
         modal.remove();
@@ -341,8 +317,6 @@ class DetalhesJogo {
     }
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
     new DetalhesJogo();
 });
-

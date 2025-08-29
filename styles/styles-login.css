@@ -28,7 +28,6 @@ body {
     position: relative;
 }
 
-
 .container::before {
     content: '';
     position: absolute;
@@ -209,35 +208,33 @@ input[type="text"]:hover, input[type="password"]:hover {
     color: #dddddd !important;
 }
 
-
 @media (max-width: 480px) {
     .container {
         margin: 10px;
         border-radius: 12px;
     }
-    
+
     header {
         padding: 30px 20px 15px;
     }
-    
+
     header h1 {
         font-size: 1.8rem;
     }
-    
+
     main {
         padding: 20px;
     }
-    
+
     input[type="text"], input[type="password"] {
         padding: 12px 14px;
     }
-    
+
     .botao-primario {
         padding: 14px 20px;
         font-size: 1rem;
     }
 }
-
 
 .container {
     animation: slideIn 0.6s ease-out;

@@ -8,13 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const email = document.getElementById("emailLogin").value.trim();
             const senha = document.getElementById("senhaLogin").value;
 
-           
             if (!email || !senha) {
                 alert("Preencha todos os campos!");
                 return;
             }
 
-          
             const usuarioCadastrado = JSON.parse(localStorage.getItem("usuarioCadastrado"));
 
             if (!usuarioCadastrado) {
@@ -22,11 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-           
             if (email === usuarioCadastrado.email && senha === usuarioCadastrado.senha) {
                 localStorage.setItem("loggedIn", "true");
                 alert("Login realizado com sucesso!");
-                window.location.href = "telaPerfil.html"; 
+                window.location.href = "telaPerfil.html";
             } else {
                 alert("E-mail ou senha incorretos!");
             }

@@ -24,7 +24,7 @@ class BibliotecaJogos {
                     window.location.href = "telaPerfil.html";
                 } else {
                     alert("Você precisa estar logado para acessar o perfil!");
-                    window.location.href = "telaLogin.html"; 
+                    window.location.href = "telaLogin.html";
                 }
             });
         }
@@ -46,7 +46,7 @@ class BibliotecaJogos {
             filtro.addEventListener('click', (e) => {
                 filtros.forEach(f => f.classList.remove('active'));
                 e.target.classList.add('active');
-                
+
                 const categoria = e.target.dataset.category;
                 this.filtrarPorCategoria(categoria);
             });
@@ -72,12 +72,12 @@ class BibliotecaJogos {
                         <label for="tituloJogo">Título do Jogo</label>
                         <input type="text" id="tituloJogo" required>
                     </div>
-                    
+
                     <div class="grupo-entrada">
                         <label for="descricaoJogo">Descrição</label>
                         <textarea id="descricaoJogo" rows="3" required></textarea>
                     </div>
-                    
+
                     <div class="grupo-entrada">
                         <label for="categoriaJogo">Categoria</label>
                         <select id="categoriaJogo" required>
@@ -89,14 +89,12 @@ class BibliotecaJogos {
                             <option value="esporte">Esporte</option>
                         </select>
                     </div>
-                    
+
                     <div class="grupo-entrada">
                         <label for="imagemJogo">URL da Imagem</label>
                         <input type="url" id="imagemJogo" placeholder="https://exemplo.com/imagem.jpg">
                     </div>
-                    
 
-                    
                     <div class="botoes-modal">
                         <button type="button" class="botao-cancelar">Cancelar</button>
                         <button type="submit" class="botao-confirmar">Adicionar Jogo</button>
@@ -147,7 +145,7 @@ class BibliotecaJogos {
     toggleModoRemocao() {
         const container = document.getElementById('jogosContainer');
         container.classList.toggle('modo-remocao');
-        
+
         const botaoRemover = document.getElementById('botaoRemoveJogo');
         if (container.classList.contains('modo-remocao')) {
             botaoRemover.textContent = '✓';
@@ -174,7 +172,7 @@ class BibliotecaJogos {
     }
 
     filtrarJogos(termo) {
-        const jogosVisiveis = this.jogos.filter(jogo => 
+        const jogosVisiveis = this.jogos.filter(jogo =>
             jogo.titulo.toLowerCase().includes(termo.toLowerCase()) ||
             jogo.descricao.toLowerCase().includes(termo.toLowerCase())
         );
@@ -219,8 +217,8 @@ class BibliotecaJogos {
     card.innerHTML = `
     <div class="carrossel-imagens">
         ${imagens.map((img, i) => `
-            <img src="${img}" alt="${jogo.titulo}" 
-                 class="imagem-jogo ${i === 0 ? 'ativa' : ''}" 
+            <img src="${img}" alt="${jogo.titulo}"
+                 class="imagem-jogo ${i === 0 ? 'ativa' : ''}"
                  onerror="this.src='https://placehold.co/200x250?text=Erro+Imagem'">
         `).join('')}
     </div>
@@ -230,7 +228,6 @@ class BibliotecaJogos {
         <button class="botao-detalhes-jogo" data-game="${jogo.id}">Detalhes</button>
     </div>
 `;
-
 
     // Troca automática de imagens
     if (imagens.length > 1) {
@@ -256,7 +253,6 @@ class BibliotecaJogos {
     return card;
 }
 
-
     irParaDetalhesJogo(id) {
         localStorage.setItem('jogoAtualId', id);
         window.location.href = 'detalhes-jogo.html';
@@ -280,4 +276,3 @@ class BibliotecaJogos {
 document.addEventListener('DOMContentLoaded', () => {
     new BibliotecaJogos();
 });
-

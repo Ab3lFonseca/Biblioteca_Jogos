@@ -1,8 +1,8 @@
 class PerfilUsuario {
     constructor() {
         this.jogos = JSON.parse(localStorage.getItem('jogos')) || [];
-        this.usuarioCadastrado = JSON.parse(localStorage.getItem('usuarioCadastrado')); 
-        this.dadosUsuario = JSON.parse(localStorage.getItem('dadosUsuario')) 
+        this.usuarioCadastrado = JSON.parse(localStorage.getItem('usuarioCadastrado'));
+        this.dadosUsuario = JSON.parse(localStorage.getItem('dadosUsuario'))
             || this.criarDadosUsuarioPadrao(this.usuarioCadastrado);
 
         this.init();
@@ -10,8 +10,8 @@ class PerfilUsuario {
 
     criarDadosUsuarioPadrao(usuarioCadastrado) {
         return {
-            nome: (usuarioCadastrado && usuarioCadastrado.nome) 
-                  ? usuarioCadastrado.nome 
+            nome: (usuarioCadastrado && usuarioCadastrado.nome)
+                  ? usuarioCadastrado.nome
                   : 'Nome do Usuário',
             descricao: '',
             avatar: "",
@@ -31,7 +31,7 @@ class PerfilUsuario {
     const btnInicio = document.getElementById('btnInicio');
     if (btnInicio) {
         btnInicio.addEventListener('click', () => {
-            window.location.href = 'telaPrincipal.html'; 
+            window.location.href = 'telaPrincipal.html';
         });
     }
 
@@ -72,7 +72,6 @@ mostrarModalAlterarAvatar() {
     modal.style.display = 'flex';
     modal.style.zIndex = 9999;
 }
-
 
     carregarDadosUsuario() {
         const nomeUsuario = document.getElementById('nomeUsuario');
@@ -141,21 +140,19 @@ mostrarModalAlterarAvatar() {
             </div>
             <div class="modal-corpo">
                 <div class="preview-avatar">
-                    <img src="${this.dadosUsuario.avatar || '../itensExternos/fotoperfilindefinida.png'}" 
+                    <img src="${this.dadosUsuario.avatar || '../itensExternos/fotoperfilindefinida.png'}"
                          alt="Preview" class="imagem-preview">
                 </div>
                 <div class="grupo-entrada">
                     <label for="urlAvatar">URL da Imagem</label>
-                    <input type="url" id="urlAvatar" 
-                           value="${this.dadosUsuario.avatar}" 
+                    <input type="url" id="urlAvatar"
+                           value="${this.dadosUsuario.avatar}"
                            placeholder="https://exemplo.com/avatar.png">
                 </div>
                 <div class="grupo-entrada">
                     <label for="uploadAvatar">Ou envie do seu computador:</label>
                     <input type="file" id="uploadAvatar" accept="image/*">
                 </div>
-                
-                
 
                 <div class="botoes-modal">
                     <button type="button" class="botao-cancelar">Cancelar</button>
@@ -164,10 +161,6 @@ mostrarModalAlterarAvatar() {
             </div>
         </div>
     `;
-
-  
-
-
 
         const botaoFechar = modal.querySelector('.botao-fechar-modal');
         const botaoCancelar = modal.querySelector('.botao-cancelar');
@@ -206,8 +199,6 @@ mostrarModalAlterarAvatar() {
                 reader.readAsDataURL(file);
             }
         });
-
-      
 
         botaoConfirmar.addEventListener('click', () => {
             const novaUrl = inputUrl.value || this.dadosUsuario.avatar;
@@ -253,9 +244,9 @@ mostrarModalAlterarAvatar() {
         card.dataset.id = jogo.id;
 
         card.innerHTML = `
-            <img src="${jogo.imagem || '../itensExternos/fotoperfilindefinida.png'}" 
-                 alt="${jogo.titulo}" 
-                 class="imagem-jogo" 
+            <img src="${jogo.imagem || '../itensExternos/fotoperfilindefinida.png'}"
+                 alt="${jogo.titulo}"
+                 class="imagem-jogo"
                  onerror="this.src='../itensExternos/fotoperfilindefinida.png'">
             <div class="informacoes-jogo">
                 <h4>${jogo.titulo}</h4>
@@ -297,7 +288,6 @@ mostrarModalAlterarAvatar() {
         localStorage.setItem('dadosUsuario', JSON.stringify(this.dadosUsuario));
     }
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
     new PerfilUsuario();
