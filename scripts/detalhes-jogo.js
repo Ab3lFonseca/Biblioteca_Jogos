@@ -89,15 +89,15 @@ class DetalhesJogo {
         }
     }
 
-    atualizarBotaoFavorito() {
+   atualizarBotaoFavorito() {
     const botaoFavorito = document.getElementById('botaoFavoritoGrande');
     if (!botaoFavorito) return;
 
     if (this.jogoAtual.favorito) {
-        botaoFavorito.textContent = "❤"; // marcado
+        botaoFavorito.textContent = "❤";  // marcado
         botaoFavorito.classList.add("favorited");
     } else {
-        botaoFavorito.textContent = "♡"; // vazio
+        botaoFavorito.textContent = "♡";  // vazio
         botaoFavorito.classList.remove("favorited");
     }
 }
@@ -184,10 +184,15 @@ class DetalhesJogo {
     }
 
     toggleFavorito() {
-        this.jogoAtual.favorito = !this.jogoAtual.favorito;
-        this.salvarJogo();
-        this.atualizarBotaoFavorito();
-    }
+
+    this.jogoAtual.favorito = !this.jogoAtual.favorito;
+
+  
+    this.salvarJogo();
+
+ 
+    this.atualizarBotaoFavorito();
+}
 
     salvarAnotacoes() {
         const textareaAnotacoes = document.getElementById('anotacoesPessoais');

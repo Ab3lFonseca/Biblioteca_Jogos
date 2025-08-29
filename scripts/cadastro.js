@@ -51,7 +51,7 @@
       }
 
       alert('Cadastro realizado com sucesso! Você já pode fazer login.');
-      window.location.href = './pages/telaLogin.html';
+      window.location.href = '/pages/telaLogin.html';
     });
   });
-})();
+})(); 

@@ -73,10 +73,7 @@ class BibliotecaJogos {
                         <input type="text" id="tituloJogo" required>
                     </div>
 
-                    <div class="grupo-entrada">
-                        <label for="descricaoJogo">Descrição</label>
-                        <textarea id="descricaoJogo" rows="3" required></textarea>
-                    </div>
+                  
 
                     <div class="grupo-entrada">
                         <label for="categoriaJogo">Categoria</label>
@@ -130,7 +127,7 @@ class BibliotecaJogos {
         const novoJogo = {
             id: this.jogoIdCounter++,
             titulo: formulario.tituloJogo.value,
-            descricao: formulario.descricaoJogo.value,
+        
             categoria: formulario.categoriaJogo.value,
             imagem: formulario.imagemJogo.value || "https://placehold.co/300x400?text=Sem+Imagem",
             dataAdicao: new Date().toISOString(),
@@ -224,7 +221,7 @@ class BibliotecaJogos {
     </div>
     <div class="informacoes-jogo">
         <h4 class="titulo-jogo">${jogo.titulo}</h4>
-        <p class="descricao-jogo">${jogo.descricao}</p>
+ 
         <button class="botao-detalhes-jogo" data-game="${jogo.id}">Detalhes</button>
     </div>
 `;

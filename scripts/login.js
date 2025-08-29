@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (email === usuarioCadastrado.email && senha === usuarioCadastrado.senha) {
                 localStorage.setItem("loggedIn", "true");
                 alert("Login realizado com sucesso!");
-                window.location.href = "telaPerfil.html";
+                window.location.href = "/pages/telaPerfil.html";
             } else {
                 alert("E-mail ou senha incorretos!");
             }
